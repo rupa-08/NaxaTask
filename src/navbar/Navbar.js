@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 function Navbar() {
   return (
@@ -17,8 +17,8 @@ function Navbar() {
           <img src="https://www.naxa.com.np/792f5bf2487bd27628a54fe64a712630.png" />
         </div>
         <div className="content">
-          <Link to="/services">
-            <span className="txt">services</span>
+          <Link spy={true} to="ServiceID" smooth={true}>
+            <span className="txt">Services</span>
           </Link>
           <div className="dropdown">
             <span className="txt">Portfolio</span>
