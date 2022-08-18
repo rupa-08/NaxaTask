@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.services {
+  display: flex;
+  margin: 30px;
+  
+}
+
+h2{
+  text-align: left;
+}
+
+.leftComponent{
+  text-align: center;
+  width: 50%;
+  align-self: center; 
+}
+
+.rightComponent{
+  width: 50%; 
+  margin-right: 100px;
+  word-wrap: true;
+  word-break: normal;
+}
+
+.description1{
+  word-wrap: true;
+  word-break: normal;
+  font-size: 15px;
+  text-align: left;
+}
+
+.description2{
+  background: #c7e2ea;
+  padding: 50px;
+  word-wrap: true;
+  /* word-break: normal; */
+  color: grey;
+  font-size: 15px;
+  text-align: left;
+}
+
+.image{
+  height: 35vh;
+  width: 100%;
+}

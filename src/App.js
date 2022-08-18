@@ -1,23 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getService } from "./redux/service";
+import Navbar from "./navbar/Navbar";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getService());
+  }, [dispatch]);
+
+  const service = useSelector((state) => state.service.service);
+  console.log(service);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {service &&
+        service.map((service, index) => {
+          if (index % 2 === 0) {
+            return (
+              <div className="services" key={index === 0}>
+                <div className="leftComponent">
+                  <img className="image" src={service.photo} />
+                </div>
+                <div className="rightComponent">
+                  {/* <img src={service.icon} /> */}
+                  <h2>{service.title}</h2>
+                  <p
+                    className="description1"
+                    dangerouslySetInnerHTML={{ __html: service.description1 }}
+                  ></p>
+                  <p
+                    className="description2"
+                    dangerouslySetInnerHTML={{ __html: service.description2 }}
+                  ></p>
+                </div>
+              </div>
+            );
+          } else {
+            return (
+              <div className="services" key={index === 0}>
+                <div className="rightComponent">
+                  {/* <img src={service.icon} /> */}
+                  <h2>{service.title}</h2>
+                  <p
+                    className="description1"
+                    dangerouslySetInnerHTML={{ __html: service.description1 }}
+                  ></p>
+                  <p
+                    className="description2"
+                    dangerouslySetInnerHTML={{ __html: service.description2 }}
+                  ></p>
+                </div>
+                <div className="leftComponent">
+                  <img className="image" src={service.photo} />
+                </div>
+              </div>
+            );
+          }
+        })}
     </div>
   );
 }
